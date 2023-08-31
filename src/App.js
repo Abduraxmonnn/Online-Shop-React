@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Cards from "./components/cards/Cards";
+import Header from "./components/header/Header";
+import Basket from "./components/basket/Basket";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="wrapper clear">
+            <Basket />
+            <Header/>
+            <div className="content p-40">
+                <div className="d-flex align-center justify-between mb-40">
+                    <h1>All Sneakers</h1>
+                    <div className="search-block d-flex">
+                        <img src="/img/search.svg" alt="Search"/>
+                        <input placeholder="Search..."/>
+                    </div>
+                </div>
+                <Cards/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
