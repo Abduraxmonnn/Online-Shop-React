@@ -4,7 +4,9 @@ function Basket() {
     return (
         <div className="overlay">
             <div className="basket">
-                <h2 className="mb-30">Basket</h2>
+                <h2 className="d-flex justify-between mb-30">Basket
+                    <img className="cancel-basket-item" src="/img/cancel-from-basket.svg" alt="Cancel"/>
+                </h2>
 
                 <div className="items">
                     <div className="basketItem d-flex align-center mb-20">
