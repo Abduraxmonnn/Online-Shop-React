@@ -1,6 +1,10 @@
 import "./Card.scss"
 
 function Card(props) {
+    const onClickButton = () => {
+        alert(props.price)
+    }
+
     return (
         <div className="d-flex">
             <div className="card">
@@ -14,7 +18,7 @@ function Card(props) {
                         <span>Price: </span>
                         <b>{props.price} RUB</b>
                     </div>
-                    <button className="button">
+                    <button className="button" onClick={onClickButton}>
                         <img src="/img/plus.svg" alt="plus"/>
                     </button>
                 </div>

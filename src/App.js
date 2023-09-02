@@ -1,12 +1,14 @@
 import Card from "./components/cards/Card";
 import Header from "./components/header/Header";
 import Basket from "./components/basket/Basket";
+import Category from "./components/categories/Category";
 
 const data = [
-    {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, img: "/img/products_img/image%205-10.png"},
-    {name: 'Мужские Кроссовки Nike Air Max 270', price: 12999, img: "/img/products_img/image%205-11.png"},
-    {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8499, img: "/img/products_img/image%205-8.png"},
-    {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8999, img: "/img/products_img/image%205.png"}
+    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 12999, img: "/img/products_img/image%205-10.png"},
+    {category: 'Men', name: 'Nike Air Max 270', price: 12999, img: "/img/products_img/image%205-11.png"},
+    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 8499, img: "/img/products_img/image%205-8.png"},
+    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 8999, img: "/img/products_img/image%205.png"},
+    // {category: 'Men', name: 'Nike Lebron XVIII Low', price: 8999, img: "/img/products_img/image%205.png"}
 ]
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
                         <input placeholder="Search..."/>
                     </div>
                 </div>
+                <Category />
                 <div className="d-flex">
                     {data.map((obj) => (
                         <Card

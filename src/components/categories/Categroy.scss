@@ -1,0 +1,26 @@
+.category {
+
+  li {
+    font-weight: 700;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    cursor: pointer;
+
+    border: 1px solid #f3f3f3;
+    padding: 20px;
+    width: 100%;
+    border-radius: 30px;
+    transition: box-shadow 0.3ms ease-in-out, transform 0.2s ease-in-out;
+
+    &:hover {
+      border-color: #9DD558;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.03);
+      transform: translateY(1.5px);
+    }
+
+    &.active {
+      background-color: #9DD558;
+      color: #fff;
+    }
+  }
+}
