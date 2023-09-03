@@ -24,3 +24,4 @@ yarn-error.log*
 
 draft
 .idea
+./local_data.json

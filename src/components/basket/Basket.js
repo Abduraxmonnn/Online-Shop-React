@@ -1,17 +1,17 @@
 import "./Basket.scss"
+import React from "react";
 
-function Basket() {
+function Basket(props) {
     return (
         <div className="overlay">
             <div className="basket">
                 <h2 className="d-flex justify-between mb-30">Basket
-                    <img className="cancel-basket-item" src="/img/cancel-from-basket.svg" alt="Cancel"/>
+                    <img onClick={props.onClose} className="cancel-basket-item" src="/img/cancel-from-basket.svg" alt="Cancel"/>
                 </h2>
 
                 <div className="items">
                     <div className="basketItem d-flex align-center mb-20">
-                        {/*<img className="mr-20" width={70} height={70} src="/img/products_img/image%205-10.png" alt="Sneaker" />*/}
-                        <div style={{backgroundImage: 'url(/img/products_img/image%205-10.png)'}}
+                        <div style={{backgroundImage: 'url(/img/products_img/image_8.png)'}}
                              className="basketItemImg">
 
                         </div>
@@ -24,7 +24,7 @@ function Basket() {
 
                     <div className="basketItem d-flex align-center mb-20">
                         {/*<img className="mr-20" width={70} height={70} src="/img/products_img/image%205-10.png" alt="Sneaker" />*/}
-                        <div style={{backgroundImage: 'url(/img/products_img/image%205.png)'}}
+                        <div style={{backgroundImage: 'url(/img/products_img/image_2.png)'}}
                              className="basketItemImg">
 
                         </div>

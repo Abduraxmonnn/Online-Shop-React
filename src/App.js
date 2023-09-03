@@ -2,20 +2,31 @@ import Card from "./components/cards/Card";
 import Header from "./components/header/Header";
 import Basket from "./components/basket/Basket";
 import Category from "./components/categories/Category";
-
-const data = [
-    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 12999, img: "/img/products_img/image%205-10.png"},
-    {category: 'Men', name: 'Nike Air Max 270', price: 12999, img: "/img/products_img/image%205-11.png"},
-    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 8499, img: "/img/products_img/image%205-8.png"},
-    {category: 'Men', name: 'Nike Blazer Mid Suede', price: 8999, img: "/img/products_img/image%205.png"},
-    // {category: 'Men', name: 'Nike Lebron XVIII Low', price: 8999, img: "/img/products_img/image%205.png"}
-]
+import React from "react";
 
 function App() {
+    const [isBasket, setIsBasket] = React.useState(false)
+    const [products, setProducts] = React.useState([])
+
+    const openBasket = () => {
+        setIsBasket(!isBasket)
+    }
+
+    React.useEffect(() => {
+        fetch("https://64ef25df219b3e2873c404c5.mockapi.io/api/v1/products")
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                setProducts(data)
+            })
+    }, [])
+
     return (
         <div className="wrapper clear">
-            {/*<Basket />*/}
-            <Header/>
+            {isBasket && <Basket onClose={openBasket}/>}
+            {/* You can use "openBasket" in Header but this is SECOND APPROACH and you can use BOTH */}
+            <Header onClickBasket={() => setIsBasket(true)}/>
             <div className="content p-40">
                 <div className="d-flex align-center justify-between mb-40">
                     <h1>All Sneakers</h1>
@@ -24,14 +35,20 @@ function App() {
                         <input placeholder="Search..."/>
                     </div>
                 </div>
-                <Category />
-                <div className="d-flex">
-                    {data.map((obj) => (
-                        <Card
-                            title={obj.name}
-                            price={obj.price}
-                            imgUrl={obj.img}/>
-                    ))}
+                <Category/>
+                <div className="d-flex flex-wrap">
+                    {products.length === 0 ? (<h2>No products for sale</h2>
+                    ) : (
+                        products.map((obj) => (
+                            <Card
+                                title={obj.name}
+                                price={obj.price}
+                                imgUrl={obj.img}
+                                onClickFavorite={() => console.log("FAVORITE")}
+                                onClickPlus={() => console.log("PLUS")}
+                            />
+                        ))
+                    )}
                 </div>
             </div>
         </div>
