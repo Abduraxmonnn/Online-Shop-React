@@ -1,37 +1,39 @@
 import "./Card.scss"
 import React from "react";
 
-function Card(props) {
+function Card({name, imgUrl, price, onClickFavorite, onClickPlus}) {
     const [isAdded, setIsAdded] = React.useState(false)
     const [isLiked, setIsLiked] = React.useState(false)
 
-    const onClickAdded = () => {
+    const onAddedBasket = () => {
+        onClickPlus({name, imgUrl, price})
         setIsAdded(!isAdded)
     }
 
-    const onClickFavorite = () => {
+    const onAddedFavorite = () => {
+        onClickFavorite({name, imgUrl, price})
         setIsLiked(!isLiked)
     }
 
     return (
         <div className="d-flex">
             <div className="card">
-                <div className="favorite">
+                <div className="favorite-btn">
                     <img
-                        onClick={onClickFavorite}
+                        onClick={onAddedFavorite}
                         src={isLiked ? "/img/like-button.svg" : "/img/unlike-button.svg"}
-                        alt="Unlike"/>
+                        alt="like"/>
                 </div>
-                <img width={133} height={112} src={props.imgUrl} alt="Sneaker-1"/>
-                <h5>{props.title}</h5>
+                <img width={133} height={112} src={imgUrl} alt="Sneaker-1"/>
+                <h5>{name}</h5>
                 <div className="d-flex justify-between align-center">
                     <div className="d-flex flex-column">
                         <span>Price: </span>
-                        <b>{props.price} RUB</b>
+                        <b>{price} RUB</b>
                     </div>
                     <img
                         className="plus"
-                        onClick={onClickAdded}
+                        onClick={onAddedBasket}
                         src={isAdded ? "/img/plus-confirm-botton.svg" : "/img/plus.svg"}
                         alt="plus"/>
                 </div>

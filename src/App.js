@@ -3,14 +3,43 @@ import Header from "./components/header/Header";
 import Basket from "./components/basket/Basket";
 import Category from "./components/categories/Category";
 import React from "react";
+import Favorite from "./components/favorite/Favorite";
 
 function App() {
     const [isBasket, setIsBasket] = React.useState(false)
+    const [isFavorite, setIsFavorite] = React.useState(false)
     const [products, setProducts] = React.useState([])
+    const [basketProducts, setBasketProducts] = React.useState([])
+    const [favoriteProducts, setFavoriteProducts] = React.useState([])
+
 
     const openBasket = () => {
         setIsBasket(!isBasket)
     }
+
+    const openFavorite = () => {
+        setIsFavorite(!isFavorite)
+    }
+
+    const onAddToBasket = (data) => {
+        setBasketProducts(prev => [...prev, data])
+    }
+
+    const onAddToFavorite = (data) => {
+        // setFavoriteProducts(prev => [...prev, data])
+                const itemIndex = favoriteProducts.findIndex((item) => item.id === data.id);
+
+        if (itemIndex !== -1) {
+            // Item is already in the array, so remove it
+            const updatedFavoriteProducts = [...favoriteProducts];
+            updatedFavoriteProducts.splice(itemIndex, 1);
+            setFavoriteProducts(updatedFavoriteProducts);
+        } else {
+            // Item is not in the array, so add it
+            setFavoriteProducts((prev) => [...prev, data]);
+        }
+    }
+
 
     React.useEffect(() => {
         fetch("https://64ef25df219b3e2873c404c5.mockapi.io/api/v1/products")
@@ -24,9 +53,10 @@ function App() {
 
     return (
         <div className="wrapper clear">
-            {isBasket && <Basket onClose={openBasket}/>}
+            {isBasket && <Basket onOpenClose={openBasket} products={basketProducts}/>}
+            {isFavorite && <Favorite onOpenClose={openFavorite} products={favoriteProducts}/>}
             {/* You can use "openBasket" in Header but this is SECOND APPROACH and you can use BOTH */}
-            <Header onClickBasket={() => setIsBasket(true)}/>
+            <Header onClickBasket={() => setIsBasket(true)} onClickFavorite={openFavorite}/>
             <div className="content p-40">
                 <div className="d-flex align-center justify-between mb-40">
                     <h1>All Sneakers</h1>
@@ -41,11 +71,11 @@ function App() {
                     ) : (
                         products.map((obj) => (
                             <Card
-                                title={obj.name}
+                                name={obj.name}
                                 price={obj.price}
                                 imgUrl={obj.img}
-                                onClickFavorite={() => console.log("FAVORITE")}
-                                onClickPlus={() => console.log("PLUS")}
+                                onClickFavorite={(product) => onAddToFavorite(product)}
+                                onClickPlus={(product) => onAddToBasket(product)}
                             />
                         ))
                     )}

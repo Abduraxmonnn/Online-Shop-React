@@ -16,7 +16,7 @@ function Header(props) {
                     <span>1205 RUB</span>
                 </li>
                 <li>
-                    <img width={21} height={19} src="/img/like-section-button.svg" alt="like"/>
+                    <img onClick={props.onClickFavorite} width={21} height={19} src="/img/like-section-button.svg" alt="like"/>
                     <img width={20} height={20} src="/img/user.svg" alt="user"/>
                 </li>
             </ul>
