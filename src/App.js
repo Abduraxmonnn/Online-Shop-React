@@ -11,6 +11,7 @@ function App() {
     const [products, setProducts] = React.useState([])
     const [basketProducts, setBasketProducts] = React.useState([])
     const [favoriteProducts, setFavoriteProducts] = React.useState([])
+    const [searchValue, setSearchValue] = React.useState('')
 
 
     const openBasket = () => {
@@ -21,13 +22,12 @@ function App() {
         setIsFavorite(!isFavorite)
     }
 
-    const onAddToBasket = (data) => {
-        setBasketProducts(prev => [...prev, data])
-    }
+    // const onAddToBasket = (data) => {
+    //     setBasketProducts(prev => [...prev, data])
+    // }
 
     const onAddToFavorite = (data) => {
-        // setFavoriteProducts(prev => [...prev, data])
-                const itemIndex = favoriteProducts.findIndex((item) => item.id === data.id);
+        const itemIndex = favoriteProducts.findIndex((item) => item.id === data.id);
 
         if (itemIndex !== -1) {
             // Item is already in the array, so remove it
@@ -37,6 +37,21 @@ function App() {
         } else {
             // Item is not in the array, so add it
             setFavoriteProducts((prev) => [...prev, data]);
+        }
+    }
+
+    const onAddToBasket = (data) => {
+        // setFavoriteProducts(prev => [...prev, data])
+        const itemIndex = basketProducts.findIndex((item) => item.id === data.id);
+
+        if (itemIndex !== -1) {
+            // Item is already in the array, so remove it
+            const updatedBasketProducts = [...basketProducts];
+            updatedBasketProducts.splice(itemIndex, 1);
+            setBasketProducts(updatedBasketProducts);
+        } else {
+            // Item is not in the array, so add it
+            setBasketProducts((prev) => [...prev, data]);
         }
     }
 
@@ -62,14 +77,18 @@ function App() {
                     <h1>All Sneakers</h1>
                     <div className="search-block d-flex">
                         <img src="/img/search.svg" alt="Search"/>
-                        <input placeholder="Search..."/>
+                        <input
+                            value={searchValue}
+                            onChange={(event) => setSearchValue(event.target.value)}
+                            placeholder="Search..."/>
                     </div>
                 </div>
                 <Category/>
                 <div className="d-flex flex-wrap">
                     {products.length === 0 ? (<h2>No products for sale</h2>
                     ) : (
-                        products.map((obj) => (
+                        products.filter((obj) =>
+                            obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((obj, index) => (
                             <Card
                                 name={obj.name}
                                 price={obj.price}
