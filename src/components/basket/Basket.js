@@ -17,7 +17,7 @@ function Basket({onOpenClose, products = []}) {
                     {
                         products.map((obj) => (
                             <div className="basketItem d-flex align-center mb-20">
-                                <div style={{backgroundImage: `url(${obj.imgUrl})`}}
+                                <div style={{backgroundImage: `url(${obj.img})`}}
                                      className="basketItemImg">
 
                                 </div>
