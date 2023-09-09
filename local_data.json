@@ -70,3 +70,90 @@
 "price": 11299,
 "img": "/img/products_img/image_4.png"
 }
+
+//[
+//  {
+//    "id": 1,
+//    "category": "Men",
+//    "name": "Nike Blazer Mid Suede",
+//    "price": 12999,
+//    "img": "/img/products_img/image_8.png"
+//  },
+//  {
+//    "id": 2,
+//    "category": "Men",
+//    "name": "Nike Air Max 270",
+//    "price": 12999,
+//    "img": "/img/products_img/image_10.png"
+//  },
+//  {
+//    "id": 3,
+//    "category": "Men",
+//    "name": "Nike Blazer Mid Suede",
+//    "price": 8499,
+//    "img": "/img/products_img/image_9.png"
+//  },
+//  {
+//    "id": 4,
+//    "category": "Men",
+//    "name": "Puma X Aka Boku Future Rider",
+//    "price": 8999,
+//    "img": "/img/products_img/image_1.png"
+//  },
+//  {
+//    "id": 5,
+//    "category": "Men",
+//    "name": "Мужские Кроссовки Under Armour Curry 8",
+//    "price": 15199,
+//    "img": "/img/products_img/image_2.png"
+//  },
+//  {
+//    "id": 6,
+//    "category": "Men",
+//    "name": "Nike Kyrie 7",
+//    "price": 11299,
+//    "img": "/img/products_img/image_3.png"
+//  },
+//  {
+//    "id": 7,
+//    "category": "Men",
+//    "name": "Jordan Air Jordan 11",
+//    "price": 10799,
+//    "img": "/img/products_img/image_5.png"
+//  },
+//  {
+//    "id": 8,
+//    "category": "Men",
+//    "name": "Nike LeBron XVIII",
+//    "price": 16499,
+//    "img": "/img/products_img/image_6.png"
+//  },
+//  {
+//    "id": 9,
+//    "category": "Men",
+//    "name": "Nike Lebron XVIII Low",
+//    "price": 13999,
+//    "img": "/img/products_img/image_7.png"
+//  },
+//  {
+//    "id": 10,
+//    "category": "Men",
+//    "name": "Nike Blazer Mid Suede",
+//    "price": 8499,
+//    "img": "/img/products_img/image_8.png"
+//  },
+//  {
+//    "id": 11,
+//    "category": "Men",
+//    "name": "X Aka Boku Future Rider",
+//    "price": 8999,
+//    "img": "/img/products_img/image_1.png"
+//  },
+//  {
+//    "id": 12,
+//    "category": "Men",
+//    "name": "Nike Kyrie Flytrap IV",
+//    "price": 11299,
+//    "img": "/img/products_img/image_4.png"
+//  }
+//]

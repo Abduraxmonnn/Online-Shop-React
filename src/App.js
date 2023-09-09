@@ -55,6 +55,10 @@ function App() {
         }
     }
 
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value)
+    }
+
 
     React.useEffect(() => {
         fetch("https://64ef25df219b3e2873c404c5.mockapi.io/api/v1/products")
@@ -79,8 +83,12 @@ function App() {
                         <img src="/img/search.svg" alt="Search"/>
                         <input
                             value={searchValue}
-                            onChange={(event) => setSearchValue(event.target.value)}
+                            onChange={onChangeSearchInput}
                             placeholder="Search..."/>
+                        {searchValue && <img
+                            className="clear cu-p"
+                            onClick={() => setSearchValue('')}
+                            src="/img/xmark-solid.svg" alt="Clear"/>}
                     </div>
                 </div>
                 <Category/>
@@ -88,8 +96,9 @@ function App() {
                     {products.length === 0 ? (<h2>No products for sale</h2>
                     ) : (
                         products.filter((obj) =>
-                            obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((obj, index) => (
+                            obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((obj) => (
                             <Card
+                                key={obj.id}
                                 name={obj.name}
                                 price={obj.price}
                                 imgUrl={obj.img}
