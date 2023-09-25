@@ -1,8 +1,11 @@
 import "./Favorite.scss"
 import React from "react";
 
-function Favorite({onOpenClose, products = []}) {
-    // const {onClose} = props
+function Favorite({onOpenClose, onClickRemoveFavoriteItem, products = []}) {
+    const onRemoveItem = (data) => {
+        onClickRemoveFavoriteItem(data)
+    }
+
     return (
         <div className="overlay">
             <div className="favorite">
@@ -14,8 +17,8 @@ function Favorite({onOpenClose, products = []}) {
                 <div className="items">
                     {
                         products.map((obj) => (
-                            <div className="favoritetItem d-flex align-center mb-20">
-                                <div style={{backgroundImage: `url(${obj.imgUrl})`}}
+                            <div key={obj.id} className="favoritetItem d-flex align-center mb-20">
+                                <div style={{backgroundImage: `url(${obj.image})`}}
                                      className="favoriteItemImg">
 
                                 </div>
@@ -23,7 +26,11 @@ function Favorite({onOpenClose, products = []}) {
                                     <p className="mb-5">{obj.name}</p>
                                     {/*<b>{obj.price} RUB</b>*/}
                                 </div>
-                                <img className="cancel-favorite-item" src="/img/cancel-from-basket.svg" alt="Cancel"/>
+                                <img
+                                    className="cancel-favorite-item"
+                                    onClick={() => onRemoveItem(obj)}
+                                    src="/img/cancel-from-basket.svg"
+                                    alt="Cancel"/>
                             </div>
                         ))
                     }

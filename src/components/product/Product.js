@@ -1,15 +1,13 @@
-// import { useNavigate } from "react-router-dom";
-//
-// const Product = (props) => {
-//     return (
-//         <a href={`/${props.data.name}`}>
-//             <section className="centers">
-//                 <div className="container">
-//                     <img src={`${props.data.img}`} alt={props.data.name}/>
-//                 </div>
-//             </section>
-//         </a>
-//     )
-// };
-//
-// export default Product
+const Product = ({name, image}) => {
+    return (
+        <a href={`/${name}`}>
+            <section className="centers">
+                <div className="container">
+                    <img src={`${image}`} alt={name}/>
+                </div>
+            </section>
+        </a>
+    )
+};
+
+export default Product

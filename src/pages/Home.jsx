@@ -51,22 +51,44 @@ const Home = () => {
         }
     }
 
+    const onRemoveFromBasketItem = (data) => {
+        setBasketProducts((prev) => prev.filter((item) => item.id !== data.id))
+    }
+
+    const onRemoveFromFavoriteItem = (data) => {
+        setFavoriteProducts((prev) => prev.filter((item) => item.id !== data.id))
+    }
+
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value)
     }
 
-
     useEffect(() => {
-        axios.get("https://64ef25df219b3e2873c404c5.mockapi.io/api/v1/products")
-            .then((response) => {
-                setProducts(response.data)
-            })
+        axios.get('http://127.0.0.1:8000/api/products/',
+        ).then((response) => {
+            setProducts(response.data)
+        })
             .catch((error) => console.log(error))
     }, [])
+
     return (
         <div className="wrapper clear">
-            {isBasket && <Basket onOpenClose={openBasket} products={basketProducts}/>}
-            {isFavorite && <Favorite onOpenClose={openFavorite} products={favoriteProducts}/>}
+            {
+                isBasket &&
+                <Basket
+                    onOpenClose={openBasket}
+                    products={basketProducts}
+                    onClickRemoveBasketItem={(products) => onRemoveFromBasketItem(products)}
+                />
+            }
+            {
+                isFavorite &&
+                <Favorite
+                    onOpenClose={openFavorite}
+                    products={favoriteProducts}
+                    onClickRemoveFavoriteItem={(products) => onRemoveFromFavoriteItem(products)}
+                />
+            }
             {/* You can use "openBasket" in Header but this is SECOND APPROACH and you can use BOTH */}
             <Header onClickBasket={() => setIsBasket(true)} onClickFavorite={openFavorite}/>
             <div className="content p-40">
@@ -84,19 +106,19 @@ const Home = () => {
                             src="/img/xmark-solid.svg" alt="Clear"/>}
                     </div>
                 </div>
-                <Category categoryData={products} />
+                <Category />
                 <div className="d-flex flex-wrap">
                     {!products.length ? (<h2>No products for sale</h2>) :
                         (products.filter((obj) =>
-                            obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((obj) => (
-                            <Card
-                                key={obj.id}
-                                product={obj}
-                                onClickFavorite={(product) => onAddToFavorite(product)}
-                                onClickPlus={(product) => onAddToBasket(product)}
-                            />
-                        ))
-                    )}
+                                obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((obj) => (
+                                <Card
+                                    key={obj.id}
+                                    product={obj}
+                                    onClickFavorite={(product) => onAddToFavorite(product)}
+                                    onClickPlus={(product) => onAddToBasket(product)}
+                                />
+                            ))
+                        )}
                 </div>
             </div>
         </div>

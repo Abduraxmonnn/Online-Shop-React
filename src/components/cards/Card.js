@@ -6,7 +6,7 @@ function Card({product, onClickFavorite, onClickPlus}) {
     const [isAdded, setIsAdded] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
 
-    const {name, img, price} = product;
+    const {id, name, image, price} = product;
 
     const onAddedBasket = () => {
         onClickPlus(product);
@@ -28,10 +28,14 @@ function Card({product, onClickFavorite, onClickPlus}) {
                         alt="like"
                     />
                 </div>
-                <Link to={`/detail/${product.id}`}>
-                    <img width={133} height={112} src={img} alt="Sneaker-1"/>
+                <Link to={`/detail/${id}`}>
+                    <img
+                        width={133}
+                        height={112}
+                        src={image}
+                        alt="Sneaker-1"
+                    />
                 </Link>
-                {/*<img width={133} height={112} src={img} alt="Sneaker-1" />*/}
                 <h5>{name}</h5>
                 <div className="d-flex justify-between align-center">
                     <div className="d-flex flex-column">

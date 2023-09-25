@@ -1,14 +1,19 @@
 import "./Basket.scss"
 import React from "react";
 
-function Basket({onOpenClose, products = []}) {
-    // const {onClose} = props
+function Basket({onOpenClose, onClickRemoveBasketItem, products = []}) {
     const totalPrice = products.reduce((a, value) => a = a + value.price, 0)
-    const tax = totalPrice * 0.05
+    const tax = Math.round(totalPrice * 0.05)
+
+    const onRemoveItem = (data) => {
+        onClickRemoveBasketItem(data);
+    };
+
     return (
         <div className="overlay">
             <div className="basket">
-                <h2 className="d-flex justify-between mb-30">Basket
+                <h2 className="d-flex justify-between mb-30">
+                    Basket
                     <img onClick={onOpenClose} className="cancel-basket-item" src="/img/cancel-from-basket.svg"
                          alt="Cancel"/>
                 </h2>
@@ -16,8 +21,8 @@ function Basket({onOpenClose, products = []}) {
                 <div className="items">
                     {
                         products.map((obj) => (
-                            <div className="basketItem d-flex align-center mb-20">
-                                <div style={{backgroundImage: `url(${obj.imgUrl})`}}
+                            <div key={obj.id} className="basketItem d-flex align-center mb-20">
+                                <div style={{backgroundImage: `url(${obj.image})`}}
                                      className="basketItemImg">
 
                                 </div>
@@ -25,7 +30,11 @@ function Basket({onOpenClose, products = []}) {
                                     <p className="mb-5">{obj.name}</p>
                                     <b>{obj.price} RUB</b>
                                 </div>
-                                <img className="cancel-basket-item" src="/img/cancel-from-basket.svg" alt="Cancel"/>
+                                <img
+                                    className="cancel-basket-item"
+                                    onClick={() => onRemoveItem(obj)}
+                                    src="/img/cancel-from-basket.svg"
+                                    alt="Cancel"/>
                             </div>
                         ))
                     }
