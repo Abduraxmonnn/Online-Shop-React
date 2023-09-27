@@ -1,8 +1,8 @@
-import Basket from "../components/basket/Basket";
-import Favorite from "../components/favorite/Favorite";
-import Header from "../components/header/Header";
-import Category from "../components/categories/Category";
-import Card from "../components/cards/Card";
+import Basket from "../../components/basket/Basket";
+import Favorite from "../../components/favorite/Favorite";
+import Header from "../../components/header/Header";
+import Category from "../../components/categories/Category";
+import Card from "../../components/cards/Card";
 import {useEffect, useState} from "react";
 import axios from "axios";
 

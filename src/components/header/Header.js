@@ -6,12 +6,14 @@ function Header({onClickBasket, onClickFavorite}) {
         <header className="d-flex justify-between align-center">
             <div className="d-flex align-center">
                 <Link to={'/'}>
-                    <img width={40} height={40} src="/img/logo.png" alt="logo"/>
+                    <div className="d-flex flex-wrap">
+                        <img width={40} height={40} src="/img/logo.png" alt="logo"/>
+                        <div>
+                            <h3>Sneakers Shop</h3>
+                            <p className="opacity-5">TOP Sneakers Shop</p>
+                        </div>
+                    </div>
                 </Link>
-                <div>
-                    <h3>Sneakers Shop</h3>
-                    <p className="opacity-5">TOP Sneakers Shop</p>
-                </div>
             </div>
             <ul className="d-flex">
                 <li className="mr-30 cu-p" onClick={onClickBasket}>
