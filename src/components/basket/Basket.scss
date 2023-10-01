@@ -9,6 +9,34 @@
   display: flex;
   flex-direction: column;
 
+  .basketEmpty {
+    text-align: center;
+
+    p {
+      width: 280px;
+      line-height: 24px;
+    }
+
+    .greenBtn {
+      width: 245px;
+      margin-top: 20px;
+
+      .back_arrow {
+        position: relative;
+        top: 1px;
+        transform: rotate(180deg);
+        margin-right: 15px;
+      }
+
+      .basketEmpty__box {
+        position: relative;
+        top: 1px;
+        margin-right: 15px;
+        transition: transform 0.15s ease-in-out;
+      }
+    }
+  }
+
   .items {
     overflow: auto;
     margin-bottom: 40px;
@@ -101,25 +129,25 @@
 }
 
 .greenBtn {
-      width: 100%;
-      height: 55px;
-      background: #9DD558;
-      border-radius: 18px;
-      border-color: white;
-      color: #ffffff;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.1s ease-in-out;
+  width: 100%;
+  height: 55px;
+  background: #9DD558;
+  border-radius: 18px;
+  border-color: white;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
 
-      &:hover {
-        background: lighten(#9DD558, 5%);
-      }
+  &:hover {
+    background: lighten(#9DD558, 5%);
+  }
 
-      &:active {
-        background: darken(#9DD558, 5%);
-      }
-    }
+  &:active {
+    background: darken(#9DD558, 5%);
+  }
+}
 
 .overlay {
   position: absolute;
